@@ -31,3 +31,28 @@ void inputData(Mahasiswa mhs[], int &n) {
         mhs[i].akhir = (mhs[i].tugas * 0.3) + (mhs[i].uts * 0.3) + (mhs[i].uas * 0.4);
     }
 }
+void tampilData(Mahasiswa mhs[], int n) {
+    cout << "\n=== Daftar Nilai Mahasiswa ===\n";
+    for (int i = 0; i < n; i++) {
+        cout << "\nNama: " << mhs[i].nama
+             << "\nNIM: " << mhs[i].nim
+             << "\nNilai Akhir: " << mhs[i].akhir;
+        if (mhs[i].akhir >= 60)
+            cout << " (LULUS)\n";
+        else
+            cout << " (TIDAK LULUS)\n";
+    }
+}
+
+void tampilStatistik(Mahasiswa mhs[], int n) {
+    float total = 0, tertinggi = mhs[0].akhir, terendah = mhs[0].akhir;
+    for (int i = 0; i < n; i++) {
+        total += mhs[i].akhir;
+        if (mhs[i].akhir > tertinggi) tertinggi = mhs[i].akhir;
+        if (mhs[i].akhir < terendah) terendah = mhs[i].akhir;
+    }
+    cout << "\n=== Statistik Nilai ===";
+    cout << "\nRata-rata: " << total / n;
+    cout << "\nNilai Tertinggi: " << tertinggi;
+    cout << "\nNilai Terendah: " << terendah << endl;
+}
