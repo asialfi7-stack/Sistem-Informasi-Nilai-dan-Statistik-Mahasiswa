@@ -56,3 +56,45 @@ void tampilStatistik(Mahasiswa mhs[], int n) {
     cout << "\nNilai Tertinggi: " << tertinggi;
     cout << "\nNilai Terendah: " << terendah << endl;
 }
+void cariMahasiswa(Mahasiswa mhs[], int n) {
+    string cari;
+    cout << "\nMasukkan NIM yang ingin dicari: ";
+    cin >> cari;
+    bool ketemu = false;
+    for (int i = 0; i < n; i++) {
+        if (mhs[i].nim == cari) {
+            cout << "\nData ditemukan!\n";
+            cout << "Nama: " << mhs[i].nama << endl;
+            cout << "Nilai Akhir: " << mhs[i].akhir << endl;
+            ketemu = true;
+            break;
+        }
+    }
+    if (!ketemu) cout << "Data dengan NIM tersebut tidak ditemukan.\n";
+}
+
+int main() {
+    Mahasiswa mhs[MAKS];
+    int n, pilihan;
+    do {
+        cout << "\n===== SISTEM INFORMASI NILAI MAHASISWA =====";
+        cout << "\n1. Input Data Mahasiswa";
+        cout << "\n2. Tampilkan Semua Data";
+        cout << "\n3. Tampilkan Statistik Nilai";
+        cout << "\n4. Cari Mahasiswa (berdasarkan NIM)";
+        cout << "\n5. Keluar";
+        cout << "\nPilih menu: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+        case 1: inputData(mhs, n); break;
+        case 2: tampilData(mhs, n); break;
+        case 3: tampilStatistik(mhs, n); break;
+        case 4: cariMahasiswa(mhs, n); break;
+        case 5: cout << "Keluar dari program.\n"; break;
+        default: cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 5);
+
+    return 0;
+}
